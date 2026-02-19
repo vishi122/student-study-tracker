@@ -1,4 +1,4 @@
-import { LayoutDashboard, BookOpen, BarChart, History as HistoryIcon, LogOut, GraduationCap } from 'lucide-react';
+import { LayoutDashboard, BookOpen, BarChart, History as HistoryIcon, LogOut, GraduationCap, Shield } from 'lucide-react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -17,6 +17,10 @@ const Sidebar = () => {
         { name: 'Analytics', icon: BarChart, path: '/analytics' },
         { name: 'Activity History', icon: HistoryIcon, path: '/history' },
     ];
+
+    const adminItems = user?.role === 'admin'
+        ? [{ name: 'Admin Dashboard', icon: Shield, path: '/admin/dashboard' }]
+        : [];
 
     return (
         <aside className="w-64 bg-slate-900 border-r border-slate-800 h-screen sticky top-0 hidden md:flex flex-col">
@@ -45,6 +49,29 @@ const Sidebar = () => {
                         <span className="font-medium">{item.name}</span>
                     </NavLink>
                 ))}
+
+                {adminItems.length > 0 && (
+                    <div className="pt-4 mt-4 border-t border-slate-800/70">
+                        <p className="px-4 mb-2 text-xs font-semibold tracking-wider text-slate-500 uppercase">
+                            Admin
+                        </p>
+                        {adminItems.map((item) => (
+                            <NavLink
+                                key={item.path}
+                                to={item.path}
+                                className={({ isActive }) =>
+                                    `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${isActive
+                                        ? 'bg-primary-600/10 text-primary-400 border border-primary-600/20'
+                                        : 'text-slate-400 hover:bg-slate-800 hover:text-white'
+                                    }`
+                                }
+                            >
+                                <item.icon className="w-5 h-5" />
+                                <span className="font-medium">{item.name}</span>
+                            </NavLink>
+                        ))}
+                    </div>
+                )}
             </nav>
 
             <div className="p-4 border-t border-slate-800">

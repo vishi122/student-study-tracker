@@ -37,6 +37,11 @@ const protect = async (req, res, next) => {
                 return res.status(401).json({ message: 'User not found' });
             }
 
+            // In case user source doesn't include role, fall back to token role.
+            if (!req.user.role && decoded.role) {
+                req.user.role = decoded.role;
+            }
+
             next();
         } catch (error) {
             console.error('Auth Middleware Error:', error);
@@ -49,4 +54,7 @@ const protect = async (req, res, next) => {
     }
 };
 
-module.exports = { protect };
+// Alias to match RBAC naming
+const authMiddleware = protect;
+
+module.exports = { protect, authMiddleware };

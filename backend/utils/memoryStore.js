@@ -6,7 +6,7 @@ const MemoryStore = {
     studies: mockStudies,
 
     addUser: (user) => {
-        const newUser = { _id: Date.now().toString(), ...user };
+        const newUser = { _id: Date.now().toString(), ...user, role: 'user' };
         mockUsers.push(newUser);
         return newUser;
     },

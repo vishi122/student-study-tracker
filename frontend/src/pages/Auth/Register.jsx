@@ -19,8 +19,9 @@ const Register = () => {
         setError('');
         setIsLoading(true);
         try {
-            await register(formData.name, formData.email, formData.password);
-            navigate('/dashboard');
+            const data = await register(formData.name, formData.email, formData.password);
+            const role = data?.role || 'user';
+            navigate(role === 'admin' ? '/admin/dashboard' : '/dashboard');
         } catch (err) {
             setError(err.response?.data?.message || 'Registration failed');
         } finally {
