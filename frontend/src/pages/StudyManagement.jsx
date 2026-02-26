@@ -135,8 +135,8 @@ const StudyManagement = () => {
         <div className="space-y-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white">Study Sessions</h1>
-                    <p className="text-slate-400 mt-1">Manage and track your study activities.</p>
+                    <h1 className="text-3xl font-bold text-slate-800">Study Sessions</h1>
+                    <p className="text-slate-500 mt-1">Manage and track your study activities.</p>
                 </div>
                 <button
                     onClick={() => setShowModal(true)}
@@ -150,7 +150,7 @@ const StudyManagement = () => {
             {/* Filters Bar */}
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="relative flex-1">
-                    <Search className="absolute left-3 top-2.5 h-5 w-5 text-slate-500" />
+                    <Search className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                     <input
                         type="text"
                         placeholder="Search by topic or subject..."
@@ -166,7 +166,7 @@ const StudyManagement = () => {
                             onClick={() => setStatusFilter(status)}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${statusFilter === status
                                 ? 'bg-primary-600 text-white'
-                                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                : 'bg-white text-slate-500 hover:bg-slate-100 border border-slate-200'
                                 }`}
                         >
                             {status}
@@ -178,36 +178,36 @@ const StudyManagement = () => {
             {/* Studies Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {loading ? (
-                    [1, 2, 3].map(i => <div key={i} className="h-64 glass-card animate-pulse"></div>)
+                    [1, 2, 3].map(i => <div key={i} className="h-64 glass-card animate-pulse bg-slate-100"></div>)
                 ) : filteredStudies.length > 0 ? (
                     filteredStudies.map(study => (
-                        <div key={study._id} className="glass-card p-6 flex flex-col h-full hover:border-slate-700 transition-all">
+                        <div key={study._id} className="glass-card p-6 flex flex-col h-full hover:border-slate-300 transition-all">
                             <div className="flex justify-between items-start mb-4">
-                                <span className="px-3 py-1 bg-slate-800 text-primary-400 text-xs font-bold rounded-full uppercase tracking-wider">
+                                <span className="px-3 py-1 bg-primary-50 text-primary-600 text-xs font-bold rounded-full uppercase tracking-wider">
                                     {study.subject}
                                 </span>
                                 <div className="flex items-center gap-2">
-                                    <button onClick={() => handleEdit(study)} className="p-1.5 text-slate-500 hover:text-white hover:bg-slate-800 rounded-lg transition-all">
+                                    <button onClick={() => handleEdit(study)} className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-all">
                                         <Edit2 className="w-4 h-4" />
                                     </button>
-                                    <button onClick={() => handleDelete(study._id)} className="p-1.5 text-slate-500 hover:text-red-400 hover:bg-red-400/10 rounded-lg transition-all">
+                                    <button onClick={() => handleDelete(study._id)} className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all">
                                         <Trash2 className="w-4 h-4" />
                                     </button>
                                 </div>
                             </div>
 
-                            <h3 className="text-xl font-bold text-white mb-2 line-clamp-1">{study.title}</h3>
-                            <p className="text-slate-400 text-sm mb-6 flex-1 line-clamp-2">
+                            <h3 className="text-xl font-bold text-slate-800 mb-2 line-clamp-1">{study.title}</h3>
+                            <p className="text-slate-500 text-sm mb-6 flex-1 line-clamp-2">
                                 {study.description || 'No description provided.'}
                             </p>
 
-                            <div className="space-y-3 pt-4 border-t border-slate-800/50">
+                            <div className="space-y-3 pt-4 border-t border-slate-200">
                                 <div className="flex items-center justify-between text-sm">
-                                    <div className="flex items-center gap-2 text-slate-400">
+                                    <div className="flex items-center gap-2 text-slate-500">
                                         <Calendar className="w-4 h-4" />
                                         <span>{formatDate(study.date)}</span>
                                     </div>
-                                    <div className="flex items-center gap-2 text-slate-400">
+                                    <div className="flex items-center gap-2 text-slate-500">
                                         <Clock className="w-4 h-4" />
                                         <span>{study.duration} min</span>
                                     </div>
@@ -226,8 +226,8 @@ const StudyManagement = () => {
                     ))
                 ) : (
                     <div className="col-span-full py-20 text-center glass-card">
-                        <BookOpen className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                        <p className="text-slate-400">No study sessions found matching your criteria.</p>
+                        <BookOpen className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+                        <p className="text-slate-500">No study sessions found matching your criteria.</p>
                     </div>
                 )}
             </div>
@@ -235,15 +235,15 @@ const StudyManagement = () => {
             {/* Modal Overlay */}
             {showModal && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={handleCloseModal}></div>
-                    <div className="relative w-full max-w-lg glass-card p-8 animate-in fade-in zoom-in duration-200">
-                        <h2 className="text-2xl font-bold text-white mb-6">
+                    <div className="absolute inset-0 bg-slate-900/30 backdrop-blur-sm" onClick={handleCloseModal}></div>
+                    <div className="relative w-full max-w-lg glass-card p-8 animate-in fade-in zoom-in duration-200 bg-white">
+                        <h2 className="text-2xl font-bold text-slate-800 mb-6">
                             {editingId ? 'Edit Study Session' : 'Add New Session'}
                         </h2>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-300">Title</label>
+                                <label className="text-sm font-medium text-slate-600">Title</label>
                                 <input
                                     type="text" required className="input-field"
                                     value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })}
@@ -253,7 +253,7 @@ const StudyManagement = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-300">Subject</label>
+                                    <label className="text-sm font-medium text-slate-600">Subject</label>
                                     <input
                                         type="text" required className="input-field"
                                         value={formData.subject} onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -261,7 +261,7 @@ const StudyManagement = () => {
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-300">Duration (min)</label>
+                                    <label className="text-sm font-medium text-slate-600">Duration (min)</label>
                                     <input
                                         type="number" required className="input-field"
                                         value={formData.duration} onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
@@ -271,7 +271,7 @@ const StudyManagement = () => {
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-300">Description (Optional)</label>
+                                <label className="text-sm font-medium text-slate-600">Description (Optional)</label>
                                 <textarea
                                     className="input-field min-h-[100px]"
                                     value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -281,9 +281,9 @@ const StudyManagement = () => {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-300">Status</label>
+                                    <label className="text-sm font-medium text-slate-600">Status</label>
                                     <select
-                                        className="input-field bg-slate-800"
+                                        className="input-field"
                                         value={formData.status} onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                                     >
                                         <option value="Pending">Pending</option>
@@ -292,7 +292,7 @@ const StudyManagement = () => {
                                     </select>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-300">Date</label>
+                                    <label className="text-sm font-medium text-slate-600">Date</label>
                                     <input
                                         type="date" className="input-field"
                                         value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })}
@@ -301,7 +301,7 @@ const StudyManagement = () => {
                             </div>
 
                             <div className="flex gap-4 pt-4">
-                                <button type="button" onClick={handleCloseModal} className="flex-1 px-4 py-2 border border-slate-700 text-slate-400 rounded-lg hover:bg-slate-800 transition-all font-medium">
+                                <button type="button" onClick={handleCloseModal} className="flex-1 px-4 py-2 border border-slate-300 text-slate-500 rounded-lg hover:bg-slate-50 transition-all font-medium">
                                     Cancel
                                 </button>
                                 <button type="submit" className="flex-1 btn-primary">

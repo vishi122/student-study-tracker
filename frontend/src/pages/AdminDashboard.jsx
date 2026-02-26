@@ -63,7 +63,7 @@ const AdminDashboard = () => {
     if (loading) {
         return (
             <div className="min-h-[50vh] flex items-center justify-center">
-                <div className="flex items-center gap-3 text-slate-300">
+                <div className="flex items-center gap-3 text-slate-500">
                     <Loader2 className="animate-spin w-5 h-5" />
                     <span>Loading admin workspace…</span>
                 </div>
@@ -74,12 +74,12 @@ const AdminDashboard = () => {
     return (
         <div className="space-y-8 pb-10">
             <header className="space-y-1">
-                <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
-                <p className="text-slate-400">Manage users, study records, and global analytics.</p>
+                <h1 className="text-3xl font-bold text-slate-800">Admin Dashboard</h1>
+                <p className="text-slate-500">Manage users, study records, and global analytics.</p>
             </header>
 
             {error && (
-                <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm">
+                <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
                     {error}
                 </div>
             )}
@@ -87,44 +87,44 @@ const AdminDashboard = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-sm text-slate-400">Users</p>
-                        <p className="text-2xl font-bold text-white mt-1">{totals.totalUsers}</p>
+                        <p className="text-sm text-slate-500">Users</p>
+                        <p className="text-2xl font-bold text-slate-800 mt-1">{totals.totalUsers}</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-slate-800/50 text-blue-400">
+                    <div className="p-3 rounded-xl bg-blue-50 text-blue-500">
                         <Users className="w-6 h-6" />
                     </div>
                 </div>
 
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-sm text-slate-400">Study Records</p>
-                        <p className="text-2xl font-bold text-white mt-1">{totals.totalStudies}</p>
+                        <p className="text-sm text-slate-500">Study Records</p>
+                        <p className="text-2xl font-bold text-slate-800 mt-1">{totals.totalStudies}</p>
                     </div>
-                    <div className="p-3 rounded-xl bg-slate-800/50 text-purple-400">
+                    <div className="p-3 rounded-xl bg-purple-50 text-purple-500">
                         <BookOpen className="w-6 h-6" />
                     </div>
                 </div>
 
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-sm text-slate-400">Total Hours (All)</p>
-                        <p className="text-2xl font-bold text-white mt-1">
+                        <p className="text-sm text-slate-500">Total Hours (All)</p>
+                        <p className="text-2xl font-bold text-slate-800 mt-1">
                             {totals.totalHours ?? '—'}
                         </p>
                     </div>
-                    <div className="p-3 rounded-xl bg-slate-800/50 text-green-400">
+                    <div className="p-3 rounded-xl bg-green-50 text-green-500">
                         <BarChart3 className="w-6 h-6" />
                     </div>
                 </div>
 
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-sm text-slate-400">Completion Rate (All)</p>
-                        <p className="text-2xl font-bold text-white mt-1">
+                        <p className="text-sm text-slate-500">Completion Rate (All)</p>
+                        <p className="text-2xl font-bold text-slate-800 mt-1">
                             {typeof totals.completionRate === 'number' ? `${totals.completionRate}%` : '—'}
                         </p>
                     </div>
-                    <div className="p-3 rounded-xl bg-slate-800/50 text-orange-400">
+                    <div className="p-3 rounded-xl bg-orange-50 text-orange-500">
                         <BarChart3 className="w-6 h-6" />
                     </div>
                 </div>
@@ -132,14 +132,14 @@ const AdminDashboard = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <section className="glass-card p-6">
-                    <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                        <Users className="w-5 h-5 text-blue-400" />
+                    <h2 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <Users className="w-5 h-5 text-blue-500" />
                         Users
                     </h2>
                     <div className="overflow-auto">
                         <table className="w-full text-sm">
                             <thead>
-                                <tr className="text-slate-400 border-b border-slate-800">
+                                <tr className="text-slate-500 border-b border-slate-200">
                                     <th className="text-left py-2 pr-2">Name</th>
                                     <th className="text-left py-2 pr-2">Email</th>
                                     <th className="text-left py-2 pr-2">Role</th>
@@ -147,11 +147,11 @@ const AdminDashboard = () => {
                             </thead>
                             <tbody>
                                 {users.map((u) => (
-                                    <tr key={u._id || u.id} className="border-b border-slate-800/60 text-slate-200">
+                                    <tr key={u._id || u.id} className="border-b border-slate-100 text-slate-700">
                                         <td className="py-2 pr-2">{u.name}</td>
                                         <td className="py-2 pr-2">{u.email}</td>
                                         <td className="py-2 pr-2">
-                                            <span className="px-2 py-1 rounded-md bg-slate-800/60 text-slate-200">
+                                            <span className="px-2 py-1 rounded-md bg-slate-100 text-slate-600">
                                                 {u.role || 'user'}
                                             </span>
                                         </td>
@@ -159,7 +159,7 @@ const AdminDashboard = () => {
                                 ))}
                                 {users.length === 0 && (
                                     <tr>
-                                        <td className="py-6 text-slate-500 italic" colSpan={3}>
+                                        <td className="py-6 text-slate-400 italic" colSpan={3}>
                                             No users found.
                                         </td>
                                     </tr>
@@ -170,8 +170,8 @@ const AdminDashboard = () => {
                 </section>
 
                 <section className="glass-card p-6">
-                    <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                        <BookOpen className="w-5 h-5 text-purple-400" />
+                    <h2 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <BookOpen className="w-5 h-5 text-purple-500" />
                         Study Records
                     </h2>
                     <div className="space-y-3 max-h-[420px] overflow-auto pr-1">
@@ -181,13 +181,13 @@ const AdminDashboard = () => {
                             return (
                                 <div
                                     key={id}
-                                    className="p-4 rounded-lg bg-slate-900/40 border border-slate-800 flex items-start justify-between gap-4"
+                                    className="p-4 rounded-lg bg-slate-50 border border-slate-200 flex items-start justify-between gap-4"
                                 >
                                     <div className="min-w-0">
-                                        <p className="text-white font-medium truncate">
-                                            {s.title} <span className="text-slate-500 font-normal">({s.subject})</span>
+                                        <p className="text-slate-800 font-medium truncate">
+                                            {s.title} <span className="text-slate-400 font-normal">({s.subject})</span>
                                         </p>
-                                        <p className="text-xs text-slate-400 mt-1 truncate">
+                                        <p className="text-xs text-slate-500 mt-1 truncate">
                                             User: {who || '—'} · {Number(s.duration) || 0} min · {s.status || '—'}
                                         </p>
                                     </div>
@@ -195,7 +195,7 @@ const AdminDashboard = () => {
                                         type="button"
                                         onClick={() => handleDeleteStudy(id)}
                                         disabled={deletingId === id}
-                                        className="shrink-0 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/15 disabled:opacity-60"
+                                        className="shrink-0 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-red-50 text-red-500 border border-red-200 hover:bg-red-100 disabled:opacity-60"
                                     >
                                         {deletingId === id ? (
                                             <Loader2 className="animate-spin w-4 h-4" />
@@ -208,7 +208,7 @@ const AdminDashboard = () => {
                             );
                         })}
                         {studies.length === 0 && (
-                            <p className="text-slate-500 italic text-sm">No study records found.</p>
+                            <p className="text-slate-400 italic text-sm">No study records found.</p>
                         )}
                     </div>
                 </section>
@@ -218,4 +218,3 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
-

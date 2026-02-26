@@ -24,7 +24,7 @@ const Analytics = () => {
         fetchAnalytics();
     }, []);
 
-    if (loading) return <div className="p-8 text-center text-slate-400">Loading Analytics...</div>;
+    if (loading) return <div className="p-8 text-center text-slate-500">Loading Analytics...</div>;
 
     const COLORS = ['#0ea5e9', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];
 
@@ -38,17 +38,17 @@ const Analytics = () => {
     return (
         <div className="space-y-8 pb-10">
             <header>
-                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                <h1 className="text-3xl font-bold text-slate-800 flex items-center gap-3">
                     <BarChart className="w-8 h-8 text-primary-500" />
                     Detailed Performance Analytics
                 </h1>
-                <p className="text-slate-400 mt-1">Deep dive into your learning patterns and efficiency.</p>
+                <p className="text-slate-500 mt-1">Deep dive into your learning patterns and efficiency.</p>
             </header>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Subject wise Time Allocation */}
                 <div className="glass-card p-6">
-                    <h3 className="text-lg font-semibold text-white mb-6">Subject Hours Breakdown</h3>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-6">Subject Hours Breakdown</h3>
                     <div className="h-80 w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
@@ -67,7 +67,7 @@ const Analytics = () => {
                                     ))}
                                 </Pie>
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#fff' }}
+                                    contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', color: '#1e293b', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
                                 />
                             </PieChart>
                         </ResponsiveContainer>
@@ -76,16 +76,16 @@ const Analytics = () => {
 
                 {/* Completion Rate Trends */}
                 <div className="glass-card p-6">
-                    <h3 className="text-lg font-semibold text-white mb-6">Subject Completion Rates (%)</h3>
+                    <h3 className="text-lg font-semibold text-slate-800 mb-6">Subject Completion Rates (%)</h3>
                     <div className="h-80 w-full">
                         <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={subjectData} layout="vertical">
-                                <CartesianGrid strokeDasharray="3 3" stroke="#334155" horizontal={true} vertical={false} />
-                                <XAxis type="number" stroke="#94a3b8" fontSize={12} domain={[0, 100]} />
-                                <YAxis dataKey="name" type="category" stroke="#94a3b8" fontSize={12} width={80} />
+                                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" horizontal={true} vertical={false} />
+                                <XAxis type="number" stroke="#64748b" fontSize={12} domain={[0, 100]} />
+                                <YAxis dataKey="name" type="category" stroke="#64748b" fontSize={12} width={80} />
                                 <Tooltip
-                                    cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                                    contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', color: '#fff' }}
+                                    cursor={{ fill: 'rgba(0,0,0,0.03)' }}
+                                    contentStyle={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', color: '#1e293b', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)' }}
                                 />
                                 <Bar dataKey="rate" fill="#10b981" radius={[0, 4, 4, 0]} barSize={30} />
                             </BarChart>
@@ -99,45 +99,45 @@ const Analytics = () => {
                 <div className="glass-card p-6 border-l-4 border-primary-500">
                     <div className="flex items-center gap-3 mb-4">
                         <Target className="w-5 h-5 text-primary-500" />
-                        <h3 className="font-semibold text-white uppercase text-xs tracking-widest">Efficiency Score</h3>
+                        <h3 className="font-semibold text-slate-800 uppercase text-xs tracking-widest">Efficiency Score</h3>
                     </div>
-                    <div className="text-4xl font-bold text-white mb-2">
+                    <div className="text-4xl font-bold text-slate-800 mb-2">
                         {analytics?.completionRate}%
                     </div>
-                    <p className="text-sm text-slate-400">Your average task completion efficiency based on logged sessions.</p>
+                    <p className="text-sm text-slate-500">Your average task completion efficiency based on logged sessions.</p>
                 </div>
 
                 <div className="glass-card p-6 border-l-4 border-purple-500">
                     <div className="flex items-center gap-3 mb-4">
                         <Award className="w-5 h-5 text-purple-500" />
-                        <h3 className="font-semibold text-white uppercase text-xs tracking-widest">Top Subject</h3>
+                        <h3 className="font-semibold text-slate-800 uppercase text-xs tracking-widest">Top Subject</h3>
                     </div>
-                    <div className="text-3xl font-bold text-white mb-2 truncate">
+                    <div className="text-3xl font-bold text-slate-800 mb-2 truncate">
                         {subjectData.sort((a, b) => b.duration - a.duration)[0]?.name || 'N/A'}
                     </div>
-                    <p className="text-sm text-slate-400">The subject where you have invested the most study time recently.</p>
+                    <p className="text-sm text-slate-500">The subject where you have invested the most study time recently.</p>
                 </div>
 
                 <div className="glass-card p-6 border-l-4 border-orange-500">
                     <div className="flex items-center gap-3 mb-4">
                         <TrendingUp className="w-5 h-5 text-orange-500" />
-                        <h3 className="font-semibold text-white uppercase text-xs tracking-widest">Daily Average</h3>
+                        <h3 className="font-semibold text-slate-800 uppercase text-xs tracking-widest">Daily Average</h3>
                     </div>
-                    <div className="text-4xl font-bold text-white mb-2">
-                        {(analytics?.totalHours / 7).toFixed(1)} <span className="text-lg text-slate-500 font-normal">hrs</span>
+                    <div className="text-4xl font-bold text-slate-800 mb-2">
+                        {(analytics?.totalHours / 7).toFixed(1)} <span className="text-lg text-slate-400 font-normal">hrs</span>
                     </div>
-                    <p className="text-sm text-slate-400">Average time spent studying per day over the last week.</p>
+                    <p className="text-sm text-slate-500">Average time spent studying per day over the last week.</p>
                 </div>
             </div>
 
-            <div className="glass-card p-6 bg-primary-600/5 border-dashed border-primary-500/30">
+            <div className="glass-card p-6 bg-primary-50/50 border-dashed border-primary-200">
                 <div className="flex items-start gap-4">
-                    <div className="bg-primary-500/10 p-2 rounded-lg">
-                        <Info className="w-6 h-6 text-primary-500" />
+                    <div className="bg-primary-100 p-2 rounded-lg">
+                        <Info className="w-6 h-6 text-primary-600" />
                     </div>
                     <div>
-                        <h4 className="text-white font-semibold mb-1">Growth Recommendation</h4>
-                        <p className="text-slate-400 text-sm leading-relaxed">
+                        <h4 className="text-slate-800 font-semibold mb-1">Growth Recommendation</h4>
+                        <p className="text-slate-500 text-sm leading-relaxed">
                             Based on your {subjectData.length} subjects, you are showing {analytics?.completionRate > 70 ? 'exceptional' : 'steady'} progress.
                             {subjectData.length > 0 && subjectData.find(s => s.rate < 50) ?
                                 ` Focusing on completing more tasks in ${subjectData.find(s => s.rate < 50).name} could boost your overall score.` :

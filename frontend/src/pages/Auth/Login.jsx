@@ -27,24 +27,24 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-900 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-primary-50 p-4">
             <div className="max-w-md w-full glass-card p-8 space-y-6">
                 <div className="text-center space-y-2">
-                    <h1 className="text-3xl font-bold text-white">Welcome Back</h1>
-                    <p className="text-slate-400">Enter your credentials to access your dashboard</p>
+                    <h1 className="text-3xl font-bold text-slate-800">Welcome Back</h1>
+                    <p className="text-slate-500">Enter your credentials to access your dashboard</p>
                 </div>
 
                 {error && (
-                    <div className="bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-2 rounded-lg text-sm">
+                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded-lg text-sm">
                         {error}
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-300">Email Address</label>
+                        <label className="text-sm font-medium text-slate-600">Email Address</label>
                         <div className="relative">
-                            <Mail className="absolute left-3 top-2.5 h-5 w-5 text-slate-500" />
+                            <Mail className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                             <input
                                 type="email"
                                 required
@@ -57,9 +57,9 @@ const Login = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-300">Password</label>
+                        <label className="text-sm font-medium text-slate-600">Password</label>
                         <div className="relative">
-                            <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-500" />
+                            <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                             <input
                                 type="password"
                                 required
@@ -86,9 +86,9 @@ const Login = () => {
                 </form>
 
                 <div className="text-center">
-                    <p className="text-slate-400">
+                    <p className="text-slate-500">
                         Don't have an account?{' '}
-                        <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">
+                        <Link to="/register" className="text-primary-600 hover:text-primary-700 font-medium">
                             Sign Up
                         </Link>
                     </p>

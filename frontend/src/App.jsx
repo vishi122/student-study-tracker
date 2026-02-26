@@ -36,12 +36,12 @@ function App() {
     return (
         <AuthProvider>
             <Router>
-                <div className="min-h-screen bg-slate-950 text-slate-100">
+                <div className="min-h-screen bg-slate-50 text-slate-800">
                     <Routes>
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
 
-                       
+
                         <Route path="/" element={<Layout />}>
                             <Route index element={<RoleIndexRedirect />} />
                             <Route

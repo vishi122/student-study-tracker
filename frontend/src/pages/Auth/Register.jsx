@@ -34,24 +34,24 @@ const Register = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-900 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-primary-50 p-4">
             <div className="max-w-md w-full glass-card p-8 space-y-6">
                 <div className="text-center space-y-2">
-                    <h1 className="text-3xl font-bold text-white">Create Account</h1>
-                    <p className="text-slate-400">Join us to start tracking your performance</p>
+                    <h1 className="text-3xl font-bold text-slate-800">Create Account</h1>
+                    <p className="text-slate-500">Join us to start tracking your performance</p>
                 </div>
 
                 {error && (
-                    <div className="bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-2 rounded-lg text-sm">
+                    <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-2 rounded-lg text-sm">
                         {error}
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-300">Full Name</label>
+                        <label className="text-sm font-medium text-slate-600">Full Name</label>
                         <div className="relative">
-                            <User className="absolute left-3 top-2.5 h-5 w-5 text-slate-500" />
+                            <User className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                             <input
                                 type="text"
                                 name="name"
@@ -65,9 +65,9 @@ const Register = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-300">Email Address</label>
+                        <label className="text-sm font-medium text-slate-600">Email Address</label>
                         <div className="relative">
-                            <Mail className="absolute left-3 top-2.5 h-5 w-5 text-slate-500" />
+                            <Mail className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                             <input
                                 type="email"
                                 name="email"
@@ -81,9 +81,9 @@ const Register = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm font-medium text-slate-300">Password</label>
+                        <label className="text-sm font-medium text-slate-600">Password</label>
                         <div className="relative">
-                            <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-500" />
+                            <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                             <input
                                 type="password"
                                 name="password"
@@ -112,9 +112,9 @@ const Register = () => {
                 </form>
 
                 <div className="text-center">
-                    <p className="text-slate-400">
+                    <p className="text-slate-500">
                         Already have an account?{' '}
-                        <Link to="/login" className="text-primary-400 hover:text-primary-300 font-medium">
+                        <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
                             Sign In
                         </Link>
                     </p>
